@@ -13,6 +13,10 @@
 		32AFC2DC29D04F280060E320 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AFC2DA29D04F280060E320 /* Main.storyboard */; };
 		32AFC2DE29D04F2C0060E320 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32AFC2DD29D04F2C0060E320 /* Assets.xcassets */; };
 		32AFC2E129D04F2C0060E320 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AFC2DF29D04F2C0060E320 /* LaunchScreen.storyboard */; };
+		32AFC2EA29D04F450060E320 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFC2E929D04F450060E320 /* API.swift */; };
+		32AFC2EC29D04F500060E320 /* Apollo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFC2EB29D04F500060E320 /* Apollo.swift */; };
+		32AFC2F629D055930060E320 /* Queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 32AFC2F529D055930060E320 /* Queries.graphql */; };
+		32AFC2F929D05BC30060E320 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 32AFC2F829D05BC30060E320 /* Apollo */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,9 @@
 		32AFC2DD29D04F2C0060E320 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32AFC2E029D04F2C0060E320 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32AFC2E229D04F2C0060E320 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32AFC2E929D04F450060E320 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		32AFC2EB29D04F500060E320 /* Apollo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apollo.swift; sourceTree = "<group>"; };
+		32AFC2F529D055930060E320 /* Queries.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Queries.graphql; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32AFC2F929D05BC30060E320 /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +64,7 @@
 		32AFC2D329D04F280060E320 /* GraphQLTest */ = {
 			isa = PBXGroup;
 			children = (
+				32AFC2E829D04F350060E320 /* GraphQL */,
 				32AFC2D429D04F280060E320 /* AppDelegate.swift */,
 				32AFC2D629D04F280060E320 /* SceneDelegate.swift */,
 				32AFC2D829D04F280060E320 /* ViewController.swift */,
@@ -67,6 +76,16 @@
 			path = GraphQLTest;
 			sourceTree = "<group>";
 		};
+		32AFC2E829D04F350060E320 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				32AFC2E929D04F450060E320 /* API.swift */,
+				32AFC2EB29D04F500060E320 /* Apollo.swift */,
+				32AFC2F529D055930060E320 /* Queries.graphql */,
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +93,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32AFC2E529D04F2C0060E320 /* Build configuration list for PBXNativeTarget "GraphQLTest" */;
 			buildPhases = (
+				32AFC2F229D04FD60060E320 /* Generate Apollo GraphQL API */,
 				32AFC2CD29D04F280060E320 /* Sources */,
 				32AFC2CE29D04F280060E320 /* Frameworks */,
 				32AFC2CF29D04F280060E320 /* Resources */,
@@ -83,6 +103,9 @@
 			dependencies = (
 			);
 			name = GraphQLTest;
+			packageProductDependencies = (
+				32AFC2F829D05BC30060E320 /* Apollo */,
+			);
 			productName = GraphQLTest;
 			productReference = 32AFC2D129D04F280060E320 /* GraphQLTest.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +134,9 @@
 				Base,
 			);
 			mainGroup = 32AFC2C829D04F280060E320;
+			packageReferences = (
+				32AFC2F729D05BC30060E320 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
 			productRefGroup = 32AFC2D229D04F280060E320 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -128,10 +154,32 @@
 				32AFC2E129D04F2C0060E320 /* LaunchScreen.storyboard in Resources */,
 				32AFC2DE29D04F2C0060E320 /* Assets.xcassets in Resources */,
 				32AFC2DC29D04F280060E320 /* Main.storyboard in Resources */,
+				32AFC2F629D055930060E320 /* Queries.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		32AFC2F229D04FD60060E320 /* Generate Apollo GraphQL API */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Apollo GraphQL API";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "Adding New Run Script\nPaste the following script into the window to let Apollo work its code-gen magic:\n# Go to the build root and search up the chain to find the \n# Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" GraphQL/API.swift\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		32AFC2CD29D04F280060E320 /* Sources */ = {
@@ -140,7 +188,9 @@
 			files = (
 				32AFC2D929D04F280060E320 /* ViewController.swift in Sources */,
 				32AFC2D529D04F280060E320 /* AppDelegate.swift in Sources */,
+				32AFC2EA29D04F450060E320 /* API.swift in Sources */,
 				32AFC2D729D04F280060E320 /* SceneDelegate.swift in Sources */,
+				32AFC2EC29D04F500060E320 /* Apollo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +266,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +320,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -295,6 +345,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,6 +374,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,6 +410,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		32AFC2F729D05BC30060E320 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.28.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		32AFC2F829D05BC30060E320 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32AFC2F729D05BC30060E320 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 32AFC2C929D04F280060E320 /* Project object */;
 }
